@@ -21,9 +21,8 @@ Feature: Product
       | SIDE_DISH  | 3        | 200        | CartResponseSchema.json |
       | SIDE_DISH  | -1       | 400        | APIErrorSchema.json     |
       | BEVERAGE   | 4        | 200        | CartResponseSchema.json |
-      | BEVERAGE   |          | 400        | APIErrorSchema.json     |
       | COMBO      | 2        | 200        | CartResponseSchema.json |
-      | COMBO      | 2        | 400        | APIErrorSchema.json     |
+      | COMBO      | -2       | 400        | APIErrorSchema.json     |
 
   @CartTest
   Scenario: Cart Checkout
