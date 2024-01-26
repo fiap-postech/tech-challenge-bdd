@@ -1,0 +1,22 @@
+[versions]
+assertjCoreVersion="3.24.2"
+cucumberVersion = '7.15.0'
+junitVersion = '5.10.1'
+restAssuredVersion="5.4.0"
+junitPlatformSuite="1.9.3"
+restCommonVersion = "1.0.0"
+lombokVersion="1.18.28"
+
+[libraries]
+assertj-core = { group="org.assertj", name="assertj-core", version.ref="assertjCoreVersion" }
+junit-jupiter-api = { module="org.junit.jupiter:junit-jupiter-api", version.ref="junitVersion" }
+junit-jupiter-engine = { module="org.junit.jupiter:junit-jupiter-engine", version.ref="junitVersion" }
+junit-vintage-engine = { module="org.junit.vintage:junit-vintage-engine", version.ref="junitVersion" }
+cucumber-junit = { module="io.cucumber:cucumber-junit", version.ref="cucumberVersion" }
+cucumber-java = { module="io.cucumber:cucumber-java", version.ref="cucumberVersion" }
+cucumber-junit-platform-engine = { module="io.cucumber:cucumber-junit-platform-engine", version.ref="cucumberVersion" }
+rest-assured = { group="io.rest-assured", name="rest-assured", version.ref="restAssuredVersion" }
+json-schema-validator = { group="io.rest-assured", name="json-schema-validator", version.ref="restAssuredVersion" }
+junit-platform-suite = { group="org.junit.platform", name="junit-platform-suite", version.ref="junitPlatformSuite" }
+rest-common = { module = "br.com.fiap.tech.challenge:rest-common", version.ref = "restCommonVersion" }
+lombok = { group="org.projectlombok", name="lombok", version.ref="lombokVersion" }

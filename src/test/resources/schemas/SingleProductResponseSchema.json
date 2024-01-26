@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "fullPrice": {
+      "type": "number"
+    },
+    "discount": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["SANDWICH", "BEVERAGE", "DESSERT", "SIDE_DISH", "COMBO"]
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "image",
+    "price",
+    "fullPrice",
+    "discount",
+    "category"
+  ]
+}

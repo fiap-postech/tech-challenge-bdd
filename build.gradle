@@ -1,0 +1,52 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+plugins {
+    id 'java'
+}
+
+group 'br.com.fiap.tech.challenge'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        url = uri("https://maven.pkg.github.com/fiap-postech/rest-common")
+        credentials {
+            username = System.getProperty("gprUser") ?: System.getenv("GITHUB_ACTOR")
+            password = System.getProperty("gprKey") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaLanguageVersion.of(17)
+    targetCompatibility = JavaLanguageVersion.of(17)
+}
+
+dependencies {
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+
+    testImplementation libs.cucumber.java
+
+    testImplementation libs.cucumber.junit
+    testImplementation libs.junit.vintage.engine
+
+    testImplementation libs.junit.platform.suite
+    testImplementation libs.assertj.core
+    testImplementation libs.rest.assured
+    testImplementation libs.cucumber.junit.platform.engine
+    testImplementation libs.json.schema.validator
+}
+
+test {
+    useJUnitPlatform()
+
+//    testLogging {
+//        events TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED
+//    }
+//
+//    systemProperties(project.gradle.startParameter.systemPropertiesArgs)
+}
