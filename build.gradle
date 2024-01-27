@@ -7,6 +7,7 @@ plugins {
 group 'br.com.fiap.tech.challenge'
 version '1.0.0-SNAPSHOT'
 
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -26,6 +27,9 @@ java {
 }
 
 dependencies {
+    implementation platform("software.amazon.awssdk:bom:2.21.20")
+    implementation 'software.amazon.awssdk:sns'
+
     testImplementation libs.junit.jupiter.api
     testRuntimeOnly libs.junit.jupiter.engine
 
@@ -39,6 +43,12 @@ dependencies {
     testImplementation libs.rest.assured
     testImplementation libs.cucumber.junit.platform.engine
     testImplementation libs.json.schema.validator
+
+    testImplementation libs.instancio.junit
+    testImplementation libs.instancio.core
+    testImplementation libs.awaitility
+
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.1'
 }
 
 test {

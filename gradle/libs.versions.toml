@@ -1,14 +1,17 @@
 [versions]
 assertjCoreVersion="3.24.2"
+awaitilityVersion="4.2.0"
 cucumberVersion = '7.15.0'
 junitVersion = '5.10.1'
 restAssuredVersion="5.4.0"
 junitPlatformSuite="1.9.3"
 restCommonVersion = "1.0.0"
 lombokVersion="1.18.28"
+instancioVersion="3.6.0"
 
 [libraries]
 assertj-core = { group="org.assertj", name="assertj-core", version.ref="assertjCoreVersion" }
+awaitility = { module="org.awaitility:awaitility", version.ref="awaitilityVersion" }
 junit-jupiter-api = { module="org.junit.jupiter:junit-jupiter-api", version.ref="junitVersion" }
 junit-jupiter-engine = { module="org.junit.jupiter:junit-jupiter-engine", version.ref="junitVersion" }
 junit-vintage-engine = { module="org.junit.vintage:junit-vintage-engine", version.ref="junitVersion" }
@@ -20,3 +23,5 @@ json-schema-validator = { group="io.rest-assured", name="json-schema-validator",
 junit-platform-suite = { group="org.junit.platform", name="junit-platform-suite", version.ref="junitPlatformSuite" }
 rest-common = { module = "br.com.fiap.tech.challenge:rest-common", version.ref = "restCommonVersion" }
 lombok = { group="org.projectlombok", name="lombok", version.ref="lombokVersion" }
+instancio-core = { group="org.instancio", name="instancio-core", version.ref="instancioVersion" }
+instancio-junit = { group="org.instancio", name="instancio-junit", version.ref="instancioVersion" }

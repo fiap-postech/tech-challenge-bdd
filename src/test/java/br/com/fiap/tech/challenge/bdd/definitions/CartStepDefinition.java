@@ -20,6 +20,7 @@ public class CartStepDefinition {
     private static final String GET_CUSTOMER_ENDPOINT = SERVICE_HOST + "/customer?document=00000000000";
     private static final String CREATE_CART_ENDPOINT = SERVICE_HOST + "/cart";
     private static final String ADD_ITEM_CART_ENDPOINT = SERVICE_HOST + "/cart/%s/items";
+    private static final String CLOSE_CART_ENDPOINT = SERVICE_HOST + "/cart/%s/close";
     private static final String GET_PRODUCT_ENDPOINT = SERVICE_HOST + "/product?category=%s";
 
     private CustomerResponse customerResponse;
@@ -53,13 +54,6 @@ public class CartStepDefinition {
                 .body(createCartRequest)
             .when()
                 .post(CREATE_CART_ENDPOINT);
-    }
-
-    @Then("I should receive a success from cart flow")
-    public void i_should_receive_a_success_from_cart_flow() {
-        cartResponse.then()
-                .statusCode(201)
-                .body(matchesJsonSchemaInClasspath("./schemas/CartResponseSchema.json"));
     }
 
     @Given("I have a product from category {string} and a quantity {int}")
@@ -96,5 +90,34 @@ public class CartStepDefinition {
                 .body(addCartItemRequest)
             .when()
                 .post(String.format(ADD_ITEM_CART_ENDPOINT, cartId));
+    }
+
+    @Then("I should receive a success from cart flow")
+    public void i_should_receive_a_success_from_cart_flow() {
+        cartResponse.then()
+                .statusCode(201)
+                .body(matchesJsonSchemaInClasspath("./schemas/CartResponseSchema.json"));
+    }
+
+    @When("I try to checkout my cart")
+    public void i_try_to_checkout_my_cart() {
+        var cartId = cartResponse
+                .then()
+                .extract()
+                .as(CartResponse.class)
+                .getId();
+
+        ResponseStepDefinition.response = given()
+                .contentType("application/json")
+                .auth()
+                .oauth2(Auth.token)
+            .when()
+                .post(String.format(CLOSE_CART_ENDPOINT, cartId));
+    }
+
+    @Then("I should receive a success response without body from cart flow")
+    public void i_should_receive_a_success_response_without_body_from_cart_flow() {
+        ResponseStepDefinition.response.then()
+                .statusCode(204);
     }
 }

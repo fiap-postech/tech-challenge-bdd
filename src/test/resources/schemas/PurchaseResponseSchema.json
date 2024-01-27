@@ -3,13 +3,36 @@
   "title": "Generated schema for Root",
   "type": "object",
   "properties": {
-    "date": {
-      "type": "string"
-    },
-    "code": {
-      "type": "string"
-    },
     "id": {
+      "type": "string"
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "document": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "document"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "date": {
       "type": "string"
     },
     "items": {
@@ -20,57 +43,78 @@
           "product": {
             "type": "object",
             "properties": {
+              "id": {
+                "type": "string"
+              },
               "name": {
                 "type": "string"
               },
               "description": {
                 "type": "string"
               },
-              "id": {
-                "type": "string"
+              "price": {
+                "type": "number"
               }
             },
             "required": [
+              "id",
               "name",
               "description",
-              "id"
+              "price"
             ]
           },
           "quantity": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "discount": {
             "type": "number"
           }
         },
         "required": [
           "product",
-          "quantity"
+          "quantity",
+          "price",
+          "discount"
         ]
       }
     },
-    "customer": {
+    "payment": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
         "id": {
           "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
         }
       },
       "required": [
-        "name",
-        "id"
+        "id",
+        "date",
+        "status",
+        "method",
+        "amount"
       ]
-    },
-    "status": {
-      "type": "string"
     }
   },
   "required": [
-    "date",
-    "code",
     "id",
-    "items",
     "customer",
-    "status"
+    "status",
+    "date",
+    "items",
+    "payment"
   ]
 }
