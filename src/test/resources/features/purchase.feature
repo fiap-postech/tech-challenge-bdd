@@ -1,12 +1,13 @@
 Feature: Purchase
 
+  @PurchaseTest
   Scenario: Create a purchase
     Given I am authenticated
     And a payment was confirmed
     Then a purchase should be created for this payment
     And that purchase exists in manufacture
 
-
+  @PurchaseTest
   Scenario Outline: Update a purchase status
     Given I am authenticated
     And I have a purchase created
